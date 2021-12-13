@@ -20,7 +20,6 @@ namespace PW1
                 Console.WriteLine("la cartella non esiste");
                 return;
             }
-
             if (!File.Exists(fileDir))
             {
                 File.OpenWrite(fileDir).Close();
