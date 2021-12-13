@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace PW1
 {
@@ -25,19 +26,35 @@ namespace PW1
                 File.OpenWrite(fileDir).Close();
             }
 
-            //File.WriteAllText(fileDir,File.ReadAllText(fileDir) + DateTime.Now.ToString()+ "\n");
-            viewLog(fileDir);
+            switch (argument.ToUpper())
+            {
+                case "NO_LOG":
+                    return;
+                break;
+                
+                case "DELETE_LOG":
+                    deleteLog(fileDir);
+                break;
+
+                case "VIEW_LOG":
+                    viewLog(fileDir);
+                break;
+
+                default:
+                    File.WriteAllText(fileDir,File.ReadAllText(fileDir) + DateTime.Now.ToString()+ "\n");
+                break;
+            }
             
         }
 
-        static void deleteLog()
+        static void deleteLog(string fileDir)
         {
-            //File.WriteAllText("");
+            File.WriteAllText(fileDir,"");
         }
         static void viewLog(string fileDir)
         {
             File.WriteAllText(fileDir,File.ReadAllText(fileDir) + DateTime.Now.ToString()+ "\n");
-            
+            Process.Start(fileDir);
             
         }
     }
