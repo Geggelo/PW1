@@ -11,14 +11,8 @@ namespace PW1
     {
         static void Main(string[] args)
         {
-            if (args.Length == 0) 
-            {
-                    ProcessStartInfo startInfo = new ProcessStartInfo("PW1.exe");
-                    startInfo.UseShellExecute=false;
-                    startInfo.Arguments = "NO_LOG";
-                    Process.Start(startInfo);
-            }
-            Log.log();
+            if(args.Length!=0) Log.log(args[0]);
+            else Log.log("");
             Console.ReadKey();
         }
     }

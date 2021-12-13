@@ -25,7 +25,19 @@ namespace PW1
                 File.OpenWrite(fileDir).Close();
             }
 
+            //File.WriteAllText(fileDir,File.ReadAllText(fileDir) + DateTime.Now.ToString()+ "\n");
+            viewLog(fileDir);
+            
+        }
+
+        static void deleteLog()
+        {
+            //File.WriteAllText("");
+        }
+        static void viewLog(string fileDir)
+        {
             File.WriteAllText(fileDir,File.ReadAllText(fileDir) + DateTime.Now.ToString()+ "\n");
+            
             
         }
     }
