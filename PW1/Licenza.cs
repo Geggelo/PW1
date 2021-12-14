@@ -19,10 +19,11 @@ namespace PW1
             
             try
             {
+                //Conversione data da config.ini
                 var date = DateTime.Parse(text1[1]);
-
-                //bool dir = (Directory.Exists(@"c:\itsd1")) ? true : false;
+                //Controllo se esiste config.ini
                 bool file = (File.Exists(fileDir)) ? true : false;
+                //Controllo se il parametro esiste
                 bool var = (text1[0] == "DATA_SCADENZA") ? true : false;
                 if (var == false)
                 {
@@ -30,6 +31,7 @@ namespace PW1
                     Console.ReadKey();
                     Environment.Exit(0);
                 }
+                //Controllo se la licenza è scaduta
                 bool valid = (date > now) ? true : false;
                 if (valid == false)
                 {
@@ -38,12 +40,6 @@ namespace PW1
                     Environment.Exit(0);
                 }
             }
-            /*catch (DirectoryNotFoundException)
-            {
-                Console.WriteLine("Directory di configurazione non trovata");
-                Console.ReadKey();
-                Environment.Exit(0);
-            }*/
             catch (FileNotFoundException)
             {
                 Console.WriteLine("File di configurazione non presente");

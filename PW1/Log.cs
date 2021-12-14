@@ -15,21 +15,29 @@ namespace PW1
             string fileDir = @"c:\itsd1\log.txt";
             string dir = @"c:\itsd1";
 
-            if (!Directory.Exists(dir))
+            //Controllo se la directory è presente
+            try
             {
-                Console.WriteLine("la cartella non esiste");
-                return;
+                bool dir = (Directory.Exists(@"c:\itsd1")) ? true : false;
             }
+            catch (DirectoryNotFoundException)
+            {
+                Console.WriteLine("Directory di configurazione non trovata");
+                Console.ReadKey();
+                Environment.Exit(0);
+            }
+
+            //Controllo se esiste log.txt
             if (!File.Exists(fileDir))
             {
                 File.OpenWrite(fileDir).Close();
             }
 
+            //Switch per gli input a console
             switch (argument.ToUpper())
             {
                 case "NO_LOG":
-                    return;
-                break;
+                return;
                 
                 case "DELETE_LOG":
                     deleteLog(fileDir);
@@ -43,18 +51,19 @@ namespace PW1
                     File.WriteAllText(fileDir,File.ReadAllText(fileDir) + DateTime.Now.ToString()+ "\n");
                 break;
             }
-            
         }
 
+        //Ripulire la log history
         static void deleteLog(string fileDir)
         {
             File.WriteAllText(fileDir,"");
         }
+
+        //Aprire log.txt
         static void viewLog(string fileDir)
         {
             File.WriteAllText(fileDir,File.ReadAllText(fileDir) + DateTime.Now.ToString()+ "\n");
             Process.Start(fileDir);
-            
         }
     }
 }

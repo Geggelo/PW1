@@ -5,12 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net;
 using System.Diagnostics;
 
 namespace PW1
@@ -19,14 +13,13 @@ namespace PW1
     {
         public static void inf()
         {
-
             Console.WriteLine("Gruppo 7: Gabbatore e Moscato");
-            Console.WriteLine("Path applicativo: "+ System.Reflection.Assembly.GetEntryAssembly().Location);
+            Console.WriteLine("Path applicativo: " + System.Reflection.Assembly.GetEntryAssembly().Location);
             Console.WriteLine("Sistema Operativo: " + System.Environment.OSVersion.Platform);
             Console.WriteLine("Versione: " + System.Environment.OSVersion);
-            Console.WriteLine("drive: "+DriveInfo.GetDrives()[0]);
-            Console.WriteLine("Spazio sul disco disponibile: "+new DriveInfo(DriveInfo.GetDrives()[0].ToString()).AvailableFreeSpace);
-            Console.WriteLine("Hostname: "+Dns.GetHostName());
+            Console.WriteLine("drive: "+ DriveInfo.GetDrives()[0]);
+            Console.WriteLine("Spazio sul disco disponibile: " + new DriveInfo(DriveInfo.GetDrives()[0].ToString()).AvailableFreeSpace);
+            Console.WriteLine("Hostname: " + Dns.GetHostName());
             foreach (var item in Dns.GetHostAddresses(Dns.GetHostName()))
             {
                 printVersionIP(item.ToString());
@@ -34,7 +27,7 @@ namespace PW1
                 Console.WriteLine(item);
             }
 
-            //Get IP from URL
+            //Ottenere IP da URL
             string url = "www.itsincom.it";
             List<IPAddress> ip = new List<IPAddress>();
             
@@ -71,9 +64,9 @@ namespace PW1
                 }
             }
             Console.WriteLine("Processo {0} con max id {1}", pName, max);
-
         }
 
+        //Ottenere ip e la versione
         private static void printVersionIP(string ip)
         {
             Console.Write("Indirizzo ");
@@ -81,7 +74,6 @@ namespace PW1
 
             if(IP.AddressFamily.ToString()=="InterNetworkV6") Console.WriteLine("IPv6");
             else if(IP.AddressFamily.ToString()=="InterNetwork") Console.WriteLine("IPv4");
-
         }
     }
 }
