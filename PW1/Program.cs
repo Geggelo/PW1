@@ -14,6 +14,8 @@ namespace PW1
         {
             if(args.Length!=0) Log.log(args[0]);
             else Log.log("");
+            Licenza.check();
+            Informazioni.inf();
             Console.ReadKey();
         }
     }

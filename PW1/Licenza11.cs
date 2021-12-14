@@ -11,18 +11,16 @@ namespace PW1
     {
         public static void check()
         {
-            string fileDir = @"c:\itsd1\config.ini";
-            string text = File.ReadAllText(fileDir);
-            char[] cut = new char[] { '=' };
-            string[] text1 = text.Split(cut);
-            var now = DateTime.Now;
-            
             try
             {
+                string text = File.ReadAllText(@"c:\itsd1\config.ini");
+                char[] cut = new char[] { '=' };
+                string[] text1 = text.Split(cut);
+                var now = DateTime.Now;
                 var date = DateTime.Parse(text1[1]);
 
-                //bool dir = (Directory.Exists(@"c:\itsd1")) ? true : false;
-                bool file = (File.Exists(fileDir)) ? true : false;
+                bool dir = (Directory.Exists(@"c:\itsd1")) ? true : false;
+                bool file = (File.Exists(@"c:\itsd1\config.ini")) ? true : false;
                 bool var = (text1[0] == "DATA_SCADENZA") ? true : false;
                 if (var == false)
                 {
@@ -38,12 +36,12 @@ namespace PW1
                     Environment.Exit(0);
                 }
             }
-            /*catch (DirectoryNotFoundException)
+            catch (DirectoryNotFoundException)
             {
                 Console.WriteLine("Directory di configurazione non trovata");
                 Console.ReadKey();
                 Environment.Exit(0);
-            }*/
+            }
             catch (FileNotFoundException)
             {
                 Console.WriteLine("File di configurazione non presente");
@@ -56,12 +54,6 @@ namespace PW1
                 Console.ReadKey();
                 Environment.Exit(0);
             }
-            catch (IndexOutOfRangeException)
-            {
-                Console.WriteLine("Data scadenza non presente");
-                Console.ReadKey();
-                Environment.Exit(0);
-            }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
@@ -69,5 +61,7 @@ namespace PW1
                 Environment.Exit(0);
             }
         }
+
+
     }
 }
