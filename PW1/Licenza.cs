@@ -19,7 +19,7 @@ namespace PW1
             
             try
             {
-                //Conversione data da config.ini
+                //Conversione data da config.ini 
                 var date = DateTime.Parse(text1[1]);
                 //Controllo se esiste config.ini
                 bool file = (File.Exists(fileDir)) ? true : false;
